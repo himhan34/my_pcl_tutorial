@@ -1,0 +1,4 @@
+<launch> 
+    <node pkg="my_pcl_tutorial" type="first" name="first" />
+    <node pkg="my_pcl_tutorial" type="second" name="second" />
+</launch>
