@@ -53,7 +53,7 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "input");
     ros::NodeHandle nh;
     ros::Subscriber sub1 = nh.subscribe<sensor_msgs::PointCloud2> ("input1", 100, boost::bind(input1, _1, _2));
-    ros::Subscriber sub2 = nh.subscribe<sensor_msgs::PointCloud2> ("input2", 100, boost::bind(input1, _1, _2));
+    ros::Subscriber sub2 = nh.subscribe<sensor_msgs::PointCloud2> ("input2", 100, boost::bind(input2, _1, _2));
     pub1 = nh.advertise<sensor_msgs::PointCloud2> ("output", 100);
     ros::spin();
 }
