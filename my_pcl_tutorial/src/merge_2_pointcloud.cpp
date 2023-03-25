@@ -27,7 +27,7 @@ using PointXYZIRT = VelodynePointXYZIRT;
 
 ros::Publisher pub1;
 
-void input1(const sensor_msgs::PointCloud2ConstPtr& msg1, const sensor_msgs::PointCloud2ConstPtr& msg2)
+void input(const sensor_msgs::PointCloud2ConstPtr& msg1, const sensor_msgs::PointCloud2ConstPtr& msg2)
 {
     // Convert sensor_msgs::PointCloud2 to pcl::PointCloud<PointXYZIRT>
     pcl::PointCloud<PointXYZIRT>::Ptr cloud1(new pcl::PointCloud<PointXYZIRT>());
@@ -52,8 +52,8 @@ int main(int argc, char** argv)
 {
     ros::init(argc, argv, "input");
     ros::NodeHandle nh;
-    ros::Subscriber sub1 = nh.subscribe<sensor_msgs::PointCloud2> ("input1", 100, boost::bind(input1, _1, _2));
-    ros::Subscriber sub2 = nh.subscribe<sensor_msgs::PointCloud2> ("input2", 100, boost::bind(input2, _1, _2));
+    ros::Subscriber sub1 = nh.subscribe<sensor_msgs::PointCloud2> ("input1", 100, boost::bind(input, _1, _2));
+    ros::Subscriber sub2 = nh.subscribe<sensor_msgs::PointCloud2> ("input2", 100, boost::bind(input, _1, _2));
     pub1 = nh.advertise<sensor_msgs::PointCloud2> ("output", 100);
     ros::spin();
 }
